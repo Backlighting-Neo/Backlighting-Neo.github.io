@@ -21,7 +21,8 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/./plugin/css/style.css">
+  <link rel="stylesheet" href="/./plugin/styles/atelier-seaside-light.css">
 </head>
 
 <body>
@@ -255,7 +256,20 @@
 </script>
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+<script>
+	$('pre').each(function(index, element){
+		var result = element.children[0].className.replace('hljs','').replace(' ','');
+		switch(result){
+			case 'javascript':
+				result = 'JS';
+				break;
+		}
+		result=result.toUpperCase();
+		$(element).prepend('<b class="name">'+result+'</b>')
+	})
+	hljs.initHighlightingOnLoad();
+</script>
 
 
 <!-- Google Analytics -->

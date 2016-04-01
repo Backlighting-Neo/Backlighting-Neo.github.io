@@ -25,7 +25,8 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/./plugin/css/style.css">
+  <link rel="stylesheet" href="/./plugin/styles/atelier-seaside-light.css">
 </head>
 
 <body>
@@ -239,9 +240,11 @@
 <p><a href="https://developer.android.com/reference/android/webkit/WebSettings.html#MIXED_CONTENT_NEVER_ALLOW" target="_blank" rel="external">https://developer.android.com/reference/android/webkit/WebSettings.html#MIXED_CONTENT_NEVER_ALLOW</a></p>
 <p>一句话来说，在Android5.0之前，KITKAT 以及之前的Android中的WebView是默认加载图片类的Mixed Content资源的，从 5.0 LOLLIPOP 之后默认不加载任何 Mixed Content 资源。</p>
 <p>要修改这种默认的行为，可以给 WebView 做这样的设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);</span><br></pre></td></tr></table></figure>
+<pre><code class="Java">webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+</code></pre>
 <p>这样是允许图片类的 Mixed Content 资源的加载，要加载全部的 Mixed Content 资源，包括js等，可以使用下边的设置 （这样做很危险）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);</span><br></pre></td></tr></table></figure>
+<pre><code class="Java">webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+</code></pre>
 <p>需要注意的是，这两个API需要在Android API 21 以上才能运行，执行前需要加SDK版本的判断，因为 KITKAT 之前，默认就是可以加载不安全资源的，所以可以放心使用。</p>
 <h2 id="Upgrade-Insecure-Requests"><a href="#Upgrade-Insecure-Requests" class="headerlink" title="Upgrade Insecure Requests"></a>Upgrade Insecure Requests</h2><h3 id="upgrade-insecure-requests-CSP指令"><a href="#upgrade-insecure-requests-CSP指令" class="headerlink" title="upgrade-insecure-requests CSP指令"></a>upgrade-insecure-requests CSP指令</h3><p>历史悠久的大站在往 HTTPS 迁移的过程中，工作量往往非常巨大，尤其是将所有资源都替换为 HTTPS 这一步，很容易产生疏漏。即使所有代码都确认没有问题，很可能某些从数据库读取的字段中还存在 HTTP 链接。</p>
 <p>而通过 upgrade-insecure-requests 这个 CSP 指令，可以让浏览器帮忙做这个转换。启用这个策略后，有两个变化：</p>
@@ -251,9 +254,10 @@
 </ul>
 <p>跟其它所有 CSP 规则一样，这个指令也有两种方式来启用。需要注意的是 upgrade-insecure-requests 只替换协议部分，所以只适用于 HTTP/HTTPS 域名和路径完全一致的场景。</p>
 <h3 id="启用方式"><a href="#启用方式" class="headerlink" title="启用方式"></a>启用方式</h3><p>要启用CSP指令，有两种方式，如果你的服务器在自己的控制下，可以自由的输出HTTP头的话，你可以在HTTP头中加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: upgrade-insecure-requests</span><br></pre></td></tr></table></figure>
-<p>如果你的服务器是虚拟主机，或是像七牛的云存储，总之不能自己输出HTTP头，可以在 Html 文件的 head 区中加入 <strong>meta</strong> 标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"upgrade-insecure-requests"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>Content-Security-Policy: upgrade-insecure-requests
+</code></pre><p>如果你的服务器是虚拟主机，或是像七牛的云存储，总之不能自己输出HTTP头，可以在 Html 文件的 head 区中加入 <strong>meta</strong> 标签</p>
+<pre><code class="html">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;
+</code></pre>
 <h3 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h3><p>加入了 <strong>Upgrade Insecure Requests</strong> 指令后，页面中的所有 <strong>http请求</strong> 都会被浏览器在 fetch 的时候，转变成 <strong>https请求</strong>，所有的页面跳转，包括 <strong>location.href</strong> 也会被转换后再发起 ，注意是所有请求，如果你某些资源域名上没有开启https，将会导致加载失败。</p>
 
       
@@ -351,7 +355,20 @@
 </script>
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+<script>
+	$('pre').each(function(index, element){
+		var result = element.children[0].className.replace('hljs','').replace(' ','');
+		switch(result){
+			case 'javascript':
+				result = 'JS';
+				break;
+		}
+		result=result.toUpperCase();
+		$(element).prepend('<b class="name">'+result+'</b>')
+	})
+	hljs.initHighlightingOnLoad();
+</script>
 
 
 <!-- Google Analytics -->
