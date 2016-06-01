@@ -6,19 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>iOS中的ReactNative切换页面图片闪屏的问题 | 逆光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文链接 崔大王的博客 iOS集成ReactNative后，切换页面图片闪屏
-问题背景在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新in">
+  <meta name="description" content="在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中的ReactNative切换页面图片闪屏的问题">
 <meta property="og:url" content="http://backlighting-neo.github.io/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/index.html">
 <meta property="og:site_name" content="逆光的博客">
-<meta property="og:description" content="原文链接 崔大王的博客 iOS集成ReactNative后，切换页面图片闪屏
-问题背景在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新in">
-<meta property="og:updated_time" content="2016-06-01T08:58:13.000Z">
+<meta property="og:description" content="在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。">
+<meta property="og:updated_time" content="2016-06-01T09:01:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中的ReactNative切换页面图片闪屏的问题">
-<meta name="twitter:description" content="原文链接 崔大王的博客 iOS集成ReactNative后，切换页面图片闪屏
-问题背景在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新in">
+<meta name="twitter:description" content="在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。">
   
     <link rel="alternative" href="/atom.xml" title="逆光的博客" type="application/atom+xml">
   
@@ -110,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Mixed-Content/" style="font-size: 10px;">Mixed Content</a> <a href="/tags/ReactNative/" style="font-size: 10px;">ReactNative</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Upgrade-Insecure-Requests/" style="font-size: 10px;">Upgrade Insecure Requests</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/https/" style="font-size: 20px;">https</a> <a href="/tags/证书链/" style="font-size: 10px;">证书链</a>
+						<a href="/tags/Mixed-Content/" style="font-size: 10px;">Mixed Content</a> <a href="/tags/ReactNative/" style="font-size: 20px;">ReactNative</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Upgrade-Insecure-Requests/" style="font-size: 10px;">Upgrade Insecure Requests</a> <a href="/tags/WebView/" style="font-size: 10px;">WebView</a> <a href="/tags/https/" style="font-size: 20px;">https</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/证书链/" style="font-size: 10px;">证书链</a>
 					</div>
 				</section>
 				
@@ -197,6 +194,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactNative/">ReactNative</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -205,7 +206,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原文链接 <a href="http://cuidawang.github.io/" target="_blank" rel="external">崔大王的博客</a> <a href="http://cuidawang.github.io/2016/06/01/iOS%E9%9B%86%E6%88%90ReactNative%E5%90%8E%EF%BC%8C%E5%88%87%E6%8D%A2%E9%A1%B5%E9%9D%A2%E5%9B%BE%E7%89%87%E9%97%AA%E5%B1%8F/" target="_blank" rel="external">iOS集成ReactNative后，切换页面图片闪屏</a></p>
+        <blockquote>
+<p>在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<p>原文链接 <a href="http://cuidawang.github.io/" target="_blank" rel="external">崔大王的博客</a> <a href="http://cuidawang.github.io/2016/06/01/iOS%E9%9B%86%E6%88%90ReactNative%E5%90%8E%EF%BC%8C%E5%88%87%E6%8D%A2%E9%A1%B5%E9%9D%A2%E5%9B%BE%E7%89%87%E9%97%AA%E5%B1%8F/" target="_blank" rel="external">iOS集成ReactNative后，切换页面图片闪屏</a></p>
 <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。<br>原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。</p>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><pre><code class="objectivec">
 - (void)clearImage

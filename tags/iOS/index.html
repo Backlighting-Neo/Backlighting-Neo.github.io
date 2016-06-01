@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: Mixed Content | 逆光的博客</title>
+  <title>Tag: iOS | 逆光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="逆光的博客">
-<meta property="og:url" content="http://backlighting-neo.github.io/tags/Mixed-Content/index.html">
+<meta property="og:url" content="http://backlighting-neo.github.io/tags/iOS/index.html">
 <meta property="og:site_name" content="逆光的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -170,11 +170,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-Android5-0中WebView默认不加载MixContent的解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iOS中的ReactNative切换页面图片闪屏的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/26/Android5-0中WebView默认不加载MixContent的解决方案/" class="article-date">
-  	<time datetime="2016-02-26T08:07:27.000Z" itemprop="datePublished">2016 26 Feb</time>
+      <a href="/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/" class="article-date">
+  	<time datetime="2016-06-01T08:49:12.000Z" itemprop="datePublished">2016 01 Jun</time>
 </a>
     </div>
   
@@ -187,7 +187,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/Android5-0中WebView默认不加载MixContent的解决方案/">Android5.0中WebView默认不加载Mixed Content的解决方案</a>
+      <a class="article-title" href="/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/">iOS中的ReactNative切换页面图片闪屏的问题</a>
     </h1>
   
 
@@ -197,8 +197,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p> 前文 ( <a href="/2016/02/24/HTTPS中证书链不完整的解决方案/">HTTPS中证书链不完整的解决方案</a> ) 中提到我们的业务是在原生APP中嵌入WebView来做的。但在更换了HTTPS协议之后，却发现在一部分安卓手机上，页面上的Mixed Content 无法加载……</p>
-<p>这里的Mixed Content 指 Image, Video 等 Optionally-blockable 类的资源，非 js, css 类的Blockable资源</p>
+<p>在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。</p>
 </blockquote>
       
     </div>
@@ -207,14 +206,14 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mixed-Content/">Mixed Content</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Upgrade-Insecure-Requests/">Upgrade Insecure Requests</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebView/">WebView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactNative/">ReactNative</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
       
 
       
         <p class="article-more-link">
-          <a  href="/2016/02/26/Android5-0中WebView默认不加载MixContent的解决方案/#more">more >></a>
+          <a  href="/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
