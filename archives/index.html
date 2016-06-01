@@ -170,6 +170,69 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS中的ReactNative切换页面图片闪屏的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/" class="article-date">
+  	<time datetime="2016-06-01T08:49:12.000Z" itemprop="datePublished">2016 01 Jun</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/01/iOS中的ReactNative切换页面图片闪屏的问题/">iOS中的ReactNative切换页面图片闪屏的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文链接 <a href="http://cuidawang.github.io/" target="_blank" rel="external">崔大王的博客</a> <a href="http://cuidawang.github.io/2016/06/01/iOS%E9%9B%86%E6%88%90ReactNative%E5%90%8E%EF%BC%8C%E5%88%87%E6%8D%A2%E9%A1%B5%E9%9D%A2%E5%9B%BE%E7%89%87%E9%97%AA%E5%B1%8F/" target="_blank" rel="external">iOS集成ReactNative后，切换页面图片闪屏</a></p>
+<h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>在原有的iOS项目中集成ReactNative后，ReactNative页面出现的时候，都会重新加载图片，会出现闪屏的现象，影响用户体验。<br>原因在于每次ReactNative页面即将消失的时候，react会自动将所有的image对象置为空，释放掉所有图片的内存，这样内存会大幅度下降，当页面再次出现的时候，会重新init图片对象，导致闪屏。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><pre><code class="objectivec">
+- (void)clearImage
+{
+  [self cancelImageLoad];
+  [self.layer removeAnimationForKey:@&quot;contents&quot;];
+  //self.image = nil;
+}
+</code></pre>
+<p>找到RCTImageView.m文件，将 - (void)clearImage 方法中的 self.image = nil; 注释掉，这样加载的图片在页面消失的时候就不会被释放了，就不会有闪屏的问题了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-ReactNative中的寻包方式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
